@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Cart — XCOTHIC</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
+    <header class="navbar cart-navbar">
+
+        <div class="container nav-container">
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+                XCOTHIC
+            </a>
+
+
+            <nav
+                class="nav-menu"
+                id="navMenu"
+            >
+
+                <a
+                    href="index.html"
+                    class="nav-link"
+                >
+                    HOME
+                </a>
+
+                <a
+                    href="shop.html"
+                    class="nav-link"
+                >
+                    SHOP
+                </a>
+
+                <a
+                    href="index.html#about"
+                    class="nav-link"
+                >
+                    ABOUT
+                </a>
+
+                <a
+                    href="index.html#contact"
+                    class="nav-link"
+                >
+                    CONTACT
+                </a>
+
+                <a
+                    href="cart.html"
+                    class="nav-cart"
+                >
+                    CART
+                    <span>0</span>
+                </a>
+
+            </nav>
+
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open menu"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         CART
+    ========================================== -->
+
+    <main class="cart-page">
+
+        <div class="container">
+
+
+            <!-- HEADER -->
+
+            <div class="cart-header">
+
+                <p class="cart-label">
+                    XCOTHIC
+                </p>
+
+                <h1>
+                    YOUR CART
+                </h1>
+
+            </div>
+
+
+            <!-- CART CONTENT -->
+
+            <div
+                class="cart-layout"
+                id="cartLayout"
+            >
+
+
+                <!-- PRODUCTS -->
+
+                <section class="cart-items-section">
+
+                    <div
+                        class="cart-items"
+                        id="cartItems"
+                    >
+                    </div>
+
+                </section>
+
+
+                <!-- SUMMARY -->
+
+                <aside class="cart-summary">
+
+                    <div class="summary-header">
+                        ORDER SUMMARY
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            SUBTOTAL
+                        </span>
+
+                        <strong id="cartSubtotal">
+                            Rp 0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            SHIPPING
+                        </span>
+
+                        <span>
+                            CALCULATED AT CHECKOUT
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary-divider">
+                    </div>
+
+
+                    <div class="summary-total">
+
+                        <span>
+                            TOTAL
+                        </span>
+
+                        <strong id="cartTotal">
+                            Rp 0
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="checkout-btn"
+                        id="checkoutBtn"
+                    >
+                        CHECKOUT
+                    </button>
+
+
+                    <a
+                        href="shop.html"
+                        class="continue-shopping"
+                    >
+                        ← CONTINUE SHOPPING
+                    </a>
+
+                </aside>
+
+            </div>
+
+
+            <!-- EMPTY CART -->
+
+            <div
+                class="cart-empty"
+                id="cartEmpty"
+            >
+
+                <span>
+                    YOUR CART IS EMPTY
+                </span>
+
+                <p>
+                    Looks like you haven't added
+                    anything to your cart yet.
+                </p>
+
+                <a
+                    href="shop.html"
+                    class="empty-cart-btn"
+                >
+                    EXPLORE SHOP
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <span>
+                    XCOTHIC
+                </span>
+
+                <p>
+                    BUILT FOR THOSE WHO MOVE DIFFERENT.
+                </p>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 XCOTHIC
+                </span>
+
+                <span>
+                    ALL RIGHTS RESERVED
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================
+         SCRIPT
+    ========================================== -->
+
+    <script src="js/products.js"></script>
+
+    <script src="js/script.js"></script>
+
+
+    <!-- =========================================
+         CART PAGE SCRIPT
+    ========================================== -->
+
+    <script>
+
+        /* =========================================
+           CART STORAGE
+        ========================================== */
+
+        const CART_KEY = "xcothic_cart";
+
+
+        /* =========================================
+           GET CART
+        ========================================== */
+
+        function getCartItems() {
+
+            try {
+
+                const cart =
+                    JSON.parse(
+                        localStorage.getItem(CART_KEY)
+                    );
+
+                return Array.isArray(cart)
+                    ? cart
+                    : [];
+
+            } catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+        /* =========================================
+           SAVE CART
+        ========================================== */
+
+        function saveCartItems(cart) {
+
+            localStorage.setItem(
+                CART_KEY,
+                JSON.stringify(cart)
+            );
+
+        }
+
+
+        /* =========================================
+           FORMAT PRICE
+        ========================================== */
+
+        function formatPrice(price) {
+
+            return "Rp " +
+                Number(price || 0)
+                .toLocaleString("id-ID");
+
+        }
+
+
+        /* =========================================
+           ELEMENTS
+        ========================================== */
+
+        const cartItems =
+            document.getElementById(
+                "cartItems"
+            );
+
+        const cartEmpty =
+            document.getElementById(
+                "cartEmpty"
+            );
+
+        const cartLayout =
+            document.getElementById(
+                "cartLayout"
+            );
+
+        const cartSubtotal =
+            document.getElementById(
+                "cartSubtotal"
+            );
+
+        const cartTotal =
+            document.getElementById(
+                "cartTotal"
+            );
+
+        const checkoutBtn =
+            document.getElementById(
+                "checkoutBtn"
+            );
+
+
+        /* =========================================
+           UPDATE NAV CART COUNT
+        ========================================== */
+
+        function updateCartNumber() {
+
+            const cart =
+                getCartItems();
+
+            const totalQuantity =
+                cart.reduce(
+                    (total, item) =>
+                        total +
+                        Number(item.quantity || 0),
+                    0
+                );
+
+            document
+                .querySelectorAll(
+                    ".nav-cart span"
+                )
+                .forEach((element) => {
+
+                    element.textContent =
+                        totalQuantity;
+
+                });
+
+        }
+
+
+        /* =========================================
+           RENDER CART
+        ========================================== */
+
+        function renderCart() {
+
+            const cart =
+                getCartItems();
+
+
+            /* EMPTY */
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML = "";
+
+                cartLayout.style.display =
+                    "none";
+
+                cartEmpty.style.display =
+                    "flex";
+
+                cartSubtotal.textContent =
+                    "Rp 0";
+
+                cartTotal.textContent =
+                    "Rp 0";
+
+                updateCartNumber();
+
+                return;
+
+            }
+
+
+            /* HAS PRODUCTS */
+
+            cartLayout.style.display =
+                "grid";
+
+            cartEmpty.style.display =
+                "none";
+
+
+            let subtotal = 0;
+
+
+            cartItems.innerHTML =
+                cart.map(
+                    (item, index) => {
+
+                        const quantity =
+                            Number(
+                                item.quantity || 1
+                            );
+
+                        const price =
+                            Number(
+                                item.price || 0
+                            );
+
+                        const itemTotal =
+                            price * quantity;
+
+                        subtotal += itemTotal;
+
+
+                        return `
+
+                            <article
+                                class="cart-item"
+                            >
+
+                                <div
+                                    class="cart-item-image"
+                                >
+
+                                    <span>
+                                        XCOTHIC
+                                    </span>
+
+                                </div>
+
+
+                                <div
+                                    class="cart-item-info"
+                                >
+
+                                    <div>
+
+                                        <p
+                                            class="cart-item-label"
+                                        >
+                                            XCOTHIC
+                                        </p>
+
+                                        <h2>
+                                            ${item.name}
+                                        </h2>
+
+                                        ${
+                                            item.size
+                                                ? `
+                                                    <p
+                                                        class="cart-item-size"
+                                                    >
+                                                        SIZE:
+                                                        ${item.size}
+                                                    </p>
+                                                `
+                                                : ""
+                                        }
+
+                                    </div>
+
+
+                                    <div
+                                        class="cart-item-price"
+                                    >
+                                        ${formatPrice(price)}
+                                    </div>
+
+
+                                    <div
+                                        class="cart-item-actions"
+                                    >
+
+                                        <div
+                                            class="cart-quantity"
+                                        >
+
+                                            <button
+                                                type="button"
+                                                data-action="minus"
+                                                data-index="${index}"
+                                            >
+                                                −
+                                            </button>
+
+                                            <span>
+                                                ${quantity}
+                                            </span>
+
+                                            <button
+                                                type="button"
+                                                data-action="plus"
+                                                data-index="${index}"
+                                            >
+                                                +
+                                            </button>
+
+                                        </div>
+
+
+                                        <button
+                                            type="button"
+                                            class="remove-cart-item"
+                                            data-action="remove"
+                                            data-index="${index}"
+                                        >
+                                            REMOVE
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+
+                        `;
+
+                    }
+                )
+                .join("");
+
+
+            /* TOTAL */
+
+            cartSubtotal.textContent =
+                formatPrice(subtotal);
+
+            cartTotal.textContent =
+                formatPrice(subtotal);
+
+
+            updateCartNumber();
+
+        }
+
+
+        /* =========================================
+           CART ACTIONS
+        ========================================== */
+
+        cartItems.addEventListener(
+            "click",
+            function(event) {
+
+                const button =
+                    event.target.closest(
+                        "button[data-action]"
+                    );
+
+                if (!button) return;
+
+
+                const action =
+                    button.dataset.action;
+
+                const index =
+                    Number(
+                        button.dataset.index
+                    );
+
+
+                const cart =
+                    getCartItems();
+
+
+                if (!cart[index]) return;
+
+
+                /* PLUS */
+
+                if (action === "plus") {
+
+                    cart[index].quantity++;
+
+                }
+
+
+                /* MINUS */
+
+                if (action === "minus") {
+
+                    cart[index].quantity--;
+
+                    if (
+                        cart[index].quantity <= 0
+                    ) {
+
+                        cart.splice(
+                            index,
+                            1
+                        );
+
+                    }
+
+                }
+
+
+                /* REMOVE */
+
+                if (action === "remove") {
+
+                    cart.splice(
+                        index,
+                        1
+                    );
+
+                }
+
+
+                saveCartItems(cart);
+
+                renderCart();
+
+            }
+        );
+
+
+        /* =========================================
+           CHECKOUT
+        ========================================== */
+
+        checkoutBtn.addEventListener(
+            "click",
+            function() {
+
+                const cart =
+                    getCartItems();
+
+
+                if (cart.length === 0) {
+
+                    return;
+
+                }
+
+
+                alert(
+                    "Checkout XCOTHIC akan segera tersedia."
+                );
+
+            }
+        );
+
+
+        /* =========================================
+           INITIAL RENDER
+        ========================================== */
+
+        renderCart();
+
+    </script>
+
+</body>
+
+</html>
