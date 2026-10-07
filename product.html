@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Product — XCOTHIC</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar product-navbar">
+        <div class="container nav-container">
+
+            <a href="index.html" class="logo">
+                XCOTHIC
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="shop.html" class="nav-link">SHOP</a>
+                <a href="index.html#about" class="nav-link">ABOUT</a>
+                <a href="index.html#contact" class="nav-link">CONTACT</a>
+
+                <a href="#" class="nav-cart">
+                    CART <span>0</span>
+                </a>
+            </nav>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open menu"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
+        </div>
+    </header>
+
+
+    <!-- PRODUCT DETAIL -->
+    <main class="product-detail">
+
+        <div class="container">
+
+            <a href="shop.html" class="back-link">
+                ← BACK TO SHOP
+            </a>
+
+            <div class="product-detail-grid">
+
+                <!-- PRODUCT IMAGE -->
+                <div class="product-detail-image">
+                    <div class="product-image-placeholder">
+                        <span>XCOTHIC</span>
+                    </div>
+                </div>
+
+
+                <!-- PRODUCT INFO -->
+                <div class="product-detail-info">
+
+                    <p class="product-label">
+                        XCOTHIC COLLECTION
+                    </p>
+
+                    <h1>
+                        PRODUCT NAME
+                    </h1>
+
+                    <p class="product-price">
+                        Rp 0
+                    </p>
+
+                    <div class="product-divider"></div>
+
+                    <p class="product-description">
+                        Product description will appear here.
+                        This section will later be connected
+                        to the XCOTHIC product database.
+                    </p>
+
+                    <div class="product-option">
+
+                        <label for="size">
+                            SIZE
+                        </label>
+
+                        <select id="size">
+                            <option value="">
+                                SELECT SIZE
+                            </option>
+
+                            <option value="S">
+                                S
+                            </option>
+
+                            <option value="M">
+                                M
+                            </option>
+
+                            <option value="L">
+                                L
+                            </option>
+
+                            <option value="XL">
+                                XL
+                            </option>
+                        </select>
+
+                    </div>
+
+                    <div class="product-quantity">
+
+                        <label for="quantity">
+                            QUANTITY
+                        </label>
+
+                        <div class="quantity-control">
+                            <button type="button">−</button>
+                            <span>1</span>
+                            <button type="button">+</button>
+                        </div>
+
+                    </div>
+
+                    <button class="add-cart-btn" type="button">
+                        ADD TO CART
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+                <span>XCOTHIC</span>
+                <p>
+                    BUILT FOR THOSE WHO MOVE DIFFERENT.
+                </p>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 XCOTHIC</span>
+                <span>ALL RIGHTS RESERVED</span>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

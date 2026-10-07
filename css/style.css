@@ -1002,3 +1002,397 @@ h2,
     }
 
 }
+/* =========================================
+   PRODUCT DETAIL
+========================================= */
+
+.product-navbar {
+    position: relative;
+    background: var(--deep-blue);
+}
+
+.product-detail {
+    padding: clamp(50px, 8vw, 100px) 0;
+    background: #ffffff;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: clamp(35px, 6vw, 70px);
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    color: var(--deep-blue);
+    text-decoration: none;
+
+    transition: opacity 0.2s ease;
+}
+
+.back-link:hover {
+    opacity: 0.6;
+}
+
+.product-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 7vw, 100px);
+
+    align-items: start;
+}
+
+
+/* PRODUCT IMAGE */
+
+.product-detail-image {
+    width: 100%;
+}
+
+.product-image-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--deep-blue),
+            var(--main-blue)
+        );
+
+    overflow: hidden;
+}
+
+.product-image-placeholder span {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(60px, 9vw, 120px);
+    letter-spacing: 3px;
+
+    color: #ffffff;
+}
+
+
+/* PRODUCT INFO */
+
+.product-detail-info {
+    padding-top: 10px;
+}
+
+.product-label {
+    margin-bottom: 12px;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    color: var(--main-blue);
+}
+
+.product-detail-info h1 {
+    margin: 0;
+
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(55px, 7vw, 95px);
+    line-height: 0.9;
+
+    color: var(--deep-blue);
+}
+
+.product-price {
+    margin-top: 20px;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    color: #111827;
+}
+
+.product-divider {
+    width: 100%;
+    height: 1px;
+
+    margin: 30px 0;
+
+    background: rgba(8, 47, 114, 0.15);
+}
+
+.product-description {
+    max-width: 480px;
+
+    font-size: 14px;
+    line-height: 1.8;
+
+    color: #667085;
+}
+
+
+/* SIZE */
+
+.product-option {
+    margin-top: 35px;
+}
+
+.product-option label,
+.product-quantity label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    color: var(--deep-blue);
+}
+
+.product-option select {
+    width: 100%;
+    max-width: 250px;
+
+    padding: 14px 16px;
+
+    border: 1px solid rgba(8, 47, 114, 0.2);
+
+    background: #ffffff;
+
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+
+    color: #111827;
+
+    cursor: pointer;
+}
+
+
+/* QUANTITY */
+
+.product-quantity {
+    margin-top: 25px;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+
+    width: fit-content;
+
+    border: 1px solid rgba(8, 47, 114, 0.2);
+}
+
+.quantity-control button {
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    background: #ffffff;
+
+    font-size: 18px;
+
+    color: var(--deep-blue);
+
+    cursor: pointer;
+}
+
+.quantity-control span {
+    width: 42px;
+
+    text-align: center;
+
+    font-size: 13px;
+}
+
+
+/* ADD TO CART */
+
+.add-cart-btn {
+    width: 100%;
+    max-width: 400px;
+
+    margin-top: 35px;
+
+    padding: 18px 25px;
+
+    border: none;
+
+    background: var(--deep-blue);
+    color: #ffffff;
+
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.add-cart-btn:hover {
+    background: var(--main-blue);
+}
+
+.add-cart-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================================
+   PRODUCT MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .product-detail-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .product-detail-info {
+        padding-top: 0;
+    }
+
+    .product-detail-info h1 {
+        font-size: clamp(60px, 13vw, 90px);
+    }
+
+    .product-image-placeholder {
+        max-width: 700px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .product-detail {
+        padding-top: 40px;
+    }
+
+    .back-link {
+        margin-bottom: 30px;
+    }
+
+    .product-detail-grid {
+        gap: 35px;
+    }
+
+    .product-detail-info h1 {
+        font-size: 58px;
+    }
+
+    .product-price {
+        font-size: 16px;
+    }
+
+    .product-description {
+        font-size: 13px;
+    }
+
+    .product-option select {
+        max-width: 100%;
+    }
+
+    .add-cart-btn {
+        max-width: 100%;
+    }
+
+}/* =========================================
+   XCOTHIC - PRODUCT PAGE FIX
+   SAFE OVERRIDE
+   ========================================= */
+
+/* Fix product image */
+.product-image-placeholder {
+    background: linear-gradient(
+        135deg,
+        var(--deep-blue),
+        var(--blue)
+    ) !important;
+}
+
+/* Fix product collection label */
+.product-label {
+    color: var(--blue) !important;
+}
+
+/* Fix ADD TO CART button */
+.add-cart-btn {
+    width: 100%;
+    max-width: 400px;
+
+    margin-top: 35px;
+    padding: 18px 25px;
+
+    border: none;
+    border-radius: 0;
+
+    background-color: var(--deep-blue) !important;
+    color: #ffffff !important;
+
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.15s ease;
+}
+
+/* Hover */
+.add-cart-btn:hover {
+    background-color: var(--blue) !important;
+    color: #ffffff !important;
+}
+
+/* Saat ditekan */
+.add-cart-btn:active {
+    background-color: var(--deep-blue) !important;
+    color: #ffffff !important;
+
+    transform: scale(0.98);
+}
+
+/* Saat tombol mendapat fokus */
+.add-cart-btn:focus {
+    background-color: var(--deep-blue) !important;
+    color: #ffffff !important;
+
+    outline: none;
+}
+
+/* Fokus keyboard */
+.add-cart-btn:focus-visible {
+    background-color: var(--deep-blue) !important;
+    color: #ffffff !important;
+
+    outline: 2px solid var(--blue);
+    outline-offset: 3px;
+}
+
+
+/* =========================================
+   MOBILE FIX
+   ========================================= */
+
+@media (max-width: 480px) {
+
+    .add-cart-btn {
+        width: 100%;
+        max-width: 100%;
+    }
+
+}
