@@ -1,40 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>XCOTHIC — Official Store</title>
 
-    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet"
     >
 
-    <!-- CSS -->
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-
 <body>
-
 
     <!-- ==================================================
          NAVBAR
@@ -42,357 +25,351 @@
 
     <header class="navbar">
 
-        <div class="container nav-container">
-
+        <div class="nav-container">
 
             <!-- LOGO -->
-
-            <a
-                href="index.html"
-                class="logo"
-                aria-label="XCOTHIC"
-            >
-
-                <span class="logo-main">XCO</span>
-
+            <a href="index.html" class="logo" aria-label="XCOTHIC">
+                <span>XCO</span>
             </a>
 
 
-            <!-- NAVIGATION -->
+            <!-- NAV RIGHT -->
+            <div class="nav-actions">
 
-            <nav class="nav-menu">
+                <!-- SEARCH -->
+                <div class="nav-search">
 
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="M16.5 16.5L21 21"></path>
+                    </svg>
 
-                <a
-                    href="index.html"
-                    class="nav-link active"
-                >
-                    HOME
-                </a>
+                    <input
+                        type="text"
+                        id="navSearch"
+                        placeholder="Search"
+                        autocomplete="off"
+                    >
 
-
-                <a
-                    href="shop.html"
-                    class="nav-link"
-                >
-                    SHOP
-                </a>
-
-
-                <a
-                    href="#about"
-                    class="nav-link"
-                >
-                    ABOUT
-                </a>
+                </div>
 
 
-                <a
-                    href="#contact"
-                    class="nav-link"
-                >
-                    CONTACT
-                </a>
+                <!-- ACCOUNT -->
+                <div class="nav-auth">
+
+                    <!-- BELUM LOGIN -->
+                    <div class="auth-guest" id="authGuest">
+
+                        <button
+                            type="button"
+                            class="auth-register"
+                            id="navRegister"
+                        >
+                            REGISTER
+                        </button>
+
+                        <button
+                            type="button"
+                            class="auth-login"
+                            id="openLogin"
+                        >
+                            LOGIN
+                        </button>
+
+                    </div>
 
 
-                <a
-                    href="#"
-                    class="nav-account"
-                    id="openLogin"
-                >
-                    ACCOUNT
-                </a>
+                    <!-- SUDAH LOGIN -->
+                    <div
+                        class="auth-user"
+                        id="authUser"
+                    >
+
+                        <button
+                            type="button"
+                            class="user-button"
+                            id="userButton"
+                            aria-label="Account"
+                            title="Account"
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <circle
+                                    cx="12"
+                                    cy="8"
+                                    r="3.5"
+                                ></circle>
+
+                                <path
+                                    d="M5 20c.8-3.5 3.2-5.5 7-5.5s6.2 2 7 5.5"
+                                ></path>
+
+                            </svg>
+
+                        </button>
+
+                    </div>
+
+                </div>
 
 
+                <!-- CART -->
                 <a
                     href="cart.html"
-                    class="nav-cart"
+                    class="cart-button"
+                    aria-label="Shopping cart"
+                    title="Shopping cart"
                 >
-                    CART
-                    <span>0</span>
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+
+                        <path
+                            d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 7H6"
+                        ></path>
+
+                        <circle
+                            cx="10"
+                            cy="20"
+                            r="1"
+                        ></circle>
+
+                        <circle
+                            cx="18"
+                            cy="20"
+                            r="1"
+                        ></circle>
+
+                    </svg>
+
+                    <span
+                        class="cart-count"
+                        id="cartCount"
+                    >
+                        0
+                    </span>
+
                 </a>
 
-
-            </nav>
-
-
-            <!-- MOBILE MENU -->
-
-            <button
-                class="menu-toggle"
-                type="button"
-                aria-label="Open menu"
-            >
-                ☰
-            </button>
-
+            </div>
 
         </div>
 
     </header>
 
 
-
     <!-- ==================================================
-         MAIN
+         HERO
     ================================================== -->
 
     <main>
 
-
-        <!-- HERO -->
-
         <section class="hero">
 
-            <div class="container hero-container">
+            <div class="hero-content">
 
-
-                <p class="hero-label">
+                <span class="hero-small">
                     SINCE 2024
-                </p>
+                </span>
 
-
-                <h1 class="hero-title">
+                <h1>
                     XCOTHIC
                 </h1>
 
-
-                <p class="hero-description">
-                    BUILT FOR THOSE
-                    WHO MOVE DIFFERENT.
+                <p>
+                    BUILT FOR THOSE WHO MOVE DIFFERENT.
                 </p>
 
-
                 <a
-                    href="shop.html"
+                    href="#collection"
                     class="hero-button"
                 >
                     EXPLORE COLLECTION
                 </a>
 
-
             </div>
 
         </section>
 
 
-
-        <!-- FEATURED -->
-
-        <section class="featured">
-
-            <div class="container">
-
-
-                <div class="section-heading">
-
-
-                    <div>
-
-                        <p class="section-label">
-                            XCOTHIC COLLECTION
-                        </p>
-
-
-                        <h2>
-                            FEATURED
-                        </h2>
-
-                    </div>
-
-
-                    <a
-                        href="shop.html"
-                        class="view-all"
-                    >
-                        VIEW ALL →
-                    </a>
-
-
-                </div>
-
-
-
-                <div class="featured-grid">
-
-
-                    <!-- PRODUCT 01 -->
-
-                    <a
-                        href="product.html"
-                        class="product-card"
-                    >
-
-                        <div class="product-image">
-
-                            <span>
-                                01
-                            </span>
-
-                        </div>
-
-
-                        <div class="product-info">
-
-                            <h3>
-                                COMING SOON
-                            </h3>
-
-
-                            <p>
-                                XCOTHIC COLLECTION
-                            </p>
-
-                        </div>
-
-                    </a>
-
-
-
-                    <!-- PRODUCT 02 -->
-
-                    <a
-                        href="product.html"
-                        class="product-card"
-                    >
-
-                        <div class="product-image">
-
-                            <span>
-                                02
-                            </span>
-
-                        </div>
-
-
-                        <div class="product-info">
-
-                            <h3>
-                                COMING SOON
-                            </h3>
-
-
-                            <p>
-                                XCOTHIC COLLECTION
-                            </p>
-
-                        </div>
-
-                    </a>
-
-
-
-                    <!-- PRODUCT 03 -->
-
-                    <a
-                        href="product.html"
-                        class="product-card"
-                    >
-
-                        <div class="product-image">
-
-                            <span>
-                                03
-                            </span>
-
-                        </div>
-
-
-                        <div class="product-info">
-
-                            <h3>
-                                COMING SOON
-                            </h3>
-
-
-                            <p>
-                                XCOTHIC COLLECTION
-                            </p>
-
-                        </div>
-
-                    </a>
-
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ABOUT -->
+        <!-- ==================================================
+             COLLECTION
+        ================================================== -->
 
         <section
-            class="about"
-            id="about"
+            class="featured"
+            id="collection"
         >
 
-            <div class="container about-container">
+            <div class="section-header">
+
+                <div>
+                    <span class="section-label">
+                        XCOTHIC COLLECTION
+                    </span>
+
+                    <h2>
+                        FEATURED
+                    </h2>
+                </div>
+
+                <a
+                    href="#"
+                    class="view-all"
+                >
+                    VIEW ALL
+                </a>
+
+            </div>
 
 
-                <p class="section-label">
+            <div class="product-grid">
+
+                <article class="product-card">
+
+                    <div class="product-image">
+                        <span>
+                            COMING SOON
+                        </span>
+
+                        <small>
+                            01
+                        </small>
+                    </div>
+
+                    <div class="product-info">
+                        <h3>
+                            XCOTHIC COLLECTION
+                        </h3>
+
+                        <p>
+                            COMING SOON
+                        </p>
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image">
+                        <span>
+                            COMING SOON
+                        </span>
+
+                        <small>
+                            02
+                        </small>
+                    </div>
+
+                    <div class="product-info">
+                        <h3>
+                            XCOTHIC COLLECTION
+                        </h3>
+
+                        <p>
+                            COMING SOON
+                        </p>
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image">
+                        <span>
+                            COMING SOON
+                        </span>
+
+                        <small>
+                            03
+                        </small>
+                    </div>
+
+                    <div class="product-info">
+                        <h3>
+                            XCOTHIC COLLECTION
+                        </h3>
+
+                        <p>
+                            COMING SOON
+                        </p>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             ABOUT
+        ================================================== -->
+
+        <section class="about">
+
+            <div class="about-content">
+
+                <span class="section-label">
                     ABOUT XCOTHIC
-                </p>
-
+                </span>
 
                 <h2>
                     MADE TO<br>
                     STAND OUT.
                 </h2>
 
-
-                <p class="about-text">
-                    XCOTHIC is built around
-                    individuality, confidence,
-                    and a different way of seeing
-                    the world.
+                <p>
+                    XCOTHIC is built for people who choose
+                    their own direction. Simple pieces,
+                    strong identity, and a mindset that
+                    refuses to follow the ordinary.
                 </p>
-
 
             </div>
 
         </section>
 
 
+        <!-- ==================================================
+             CTA
+        ================================================== -->
 
-        <!-- CTA -->
+        <section class="cta">
 
-        <section
-            class="cta"
-            id="contact"
-        >
+            <div class="cta-content">
 
-            <div class="container cta-container">
-
-
-                <p class="section-label">
+                <span class="section-label">
                     STAY DIFFERENT
-                </p>
-
+                </span>
 
                 <h2>
                     SOMETHING NEW<br>
                     IS COMING.
                 </h2>
 
-
                 <a
-                    href="shop.html"
-                    class="hero-button"
+                    href="#collection"
+                    class="cta-button"
                 >
                     SHOP XCOTHIC
                 </a>
-
 
             </div>
 
         </section>
 
-
     </main>
-
 
 
     <!-- ==================================================
@@ -401,23 +378,19 @@
 
     <footer class="footer">
 
-        <div class="container footer-container">
-
+        <div class="footer-inner">
 
             <div class="footer-brand">
 
-                <span>
+                <span class="footer-logo">
                     XCOTHIC
                 </span>
 
-
                 <p>
-                    BUILT FOR THOSE
-                    WHO MOVE DIFFERENT.
+                    BUILT FOR THOSE WHO MOVE DIFFERENT.
                 </p>
 
             </div>
-
 
             <div class="footer-bottom">
 
@@ -425,18 +398,15 @@
                     © 2024 XCOTHIC
                 </span>
 
-
                 <span>
                     ALL RIGHTS RESERVED
                 </span>
 
             </div>
 
-
         </div>
 
     </footer>
-
 
 
     <!-- ==================================================
@@ -444,25 +414,20 @@
     ================================================== -->
 
     <div
-        class="modal-overlay"
+        class="account-modal"
         id="accountModal"
     >
 
-
-        <div class="account-modal">
-
-
-            <!-- CLOSE -->
+        <div class="account-modal-box">
 
             <button
+                type="button"
                 class="modal-close"
                 id="closeAccountModal"
-                type="button"
                 aria-label="Close"
             >
                 ×
             </button>
-
 
 
             <!-- LOGIN -->
@@ -472,25 +437,19 @@
                 id="loginForm"
             >
 
-
-                <p class="auth-label">
+                <span class="auth-label">
                     XCOTHIC ACCOUNT
-                </p>
-
+                </span>
 
                 <h2>
-                    WELCOME<br>
-                    BACK.
+                    LOGIN
                 </h2>
 
-
-                <p class="auth-description">
-                    SIGN IN TO YOUR ACCOUNT.
+                <p>
+                    Sign in to your XCOTHIC account.
                 </p>
 
-
                 <form id="loginFormElement">
-
 
                     <div class="input-group">
 
@@ -498,17 +457,14 @@
                             EMAIL
                         </label>
 
-
                         <input
                             type="email"
                             id="loginEmail"
-                            placeholder="YOUR EMAIL"
-                            autocomplete="email"
+                            placeholder="Enter your email"
                             required
                         >
 
                     </div>
-
 
 
                     <div class="input-group">
@@ -517,46 +473,42 @@
                             PASSWORD
                         </label>
 
-
                         <input
                             type="password"
                             id="loginPassword"
-                            placeholder="YOUR PASSWORD"
-                            autocomplete="current-password"
+                            placeholder="Enter your password"
                             required
                         >
 
                     </div>
 
 
-
                     <button
                         type="submit"
-                        class="auth-button"
+                        class="auth-submit"
                     >
-                        SIGN IN
+                        LOGIN
                     </button>
-
 
                 </form>
 
 
-                <p class="auth-switch">
+                <div class="auth-switch">
 
-                    DON'T HAVE AN ACCOUNT?
+                    <span>
+                        Don't have an account?
+                    </span>
 
                     <button
                         type="button"
                         id="showRegister"
                     >
-                        CREATE ACCOUNT
+                        REGISTER
                     </button>
 
-                </p>
-
+                </div>
 
             </div>
-
 
 
             <!-- REGISTER -->
@@ -566,43 +518,34 @@
                 id="registerForm"
             >
 
-
-                <p class="auth-label">
+                <span class="auth-label">
                     XCOTHIC ACCOUNT
-                </p>
-
+                </span>
 
                 <h2>
-                    CREATE<br>
-                    ACCOUNT.
+                    REGISTER
                 </h2>
 
-
-                <p class="auth-description">
-                    JOIN THE XCOTHIC COMMUNITY.
+                <p>
+                    Create your XCOTHIC account.
                 </p>
 
-
                 <form id="registerFormElement">
-
 
                     <div class="input-group">
 
                         <label for="registerName">
-                            FULL NAME
+                            NAME
                         </label>
-
 
                         <input
                             type="text"
                             id="registerName"
-                            placeholder="YOUR NAME"
-                            autocomplete="name"
+                            placeholder="Your name"
                             required
                         >
 
                     </div>
-
 
 
                     <div class="input-group">
@@ -611,17 +554,14 @@
                             EMAIL
                         </label>
 
-
                         <input
                             type="email"
                             id="registerEmail"
-                            placeholder="YOUR EMAIL"
-                            autocomplete="email"
+                            placeholder="Your email"
                             required
                         >
 
                     </div>
-
 
 
                     <div class="input-group">
@@ -630,17 +570,14 @@
                             PASSWORD
                         </label>
 
-
                         <input
                             type="password"
                             id="registerPassword"
-                            placeholder="CREATE PASSWORD"
-                            autocomplete="new-password"
+                            placeholder="Create a password"
                             required
                         >
 
                     </div>
-
 
 
                     <div class="input-group">
@@ -649,58 +586,49 @@
                             CONFIRM PASSWORD
                         </label>
 
-
                         <input
                             type="password"
                             id="registerConfirmPassword"
-                            placeholder="CONFIRM PASSWORD"
-                            autocomplete="new-password"
+                            placeholder="Repeat your password"
                             required
                         >
 
                     </div>
 
 
-
                     <button
                         type="submit"
-                        class="auth-button"
+                        class="auth-submit"
                     >
                         CREATE ACCOUNT
                     </button>
 
-
                 </form>
 
 
-                <p class="auth-switch">
+                <div class="auth-switch">
 
-                    ALREADY HAVE AN ACCOUNT?
+                    <span>
+                        Already have an account?
+                    </span>
 
                     <button
                         type="button"
                         id="showLogin"
                     >
-                        SIGN IN
+                        LOGIN
                     </button>
 
-                </p>
-
+                </div>
 
             </div>
-
 
         </div>
 
     </div>
 
 
-
-    <!-- JAVASCRIPT -->
-
     <script src="js/script.js"></script>
 
-
 </body>
-
 </html>

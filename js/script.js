@@ -1,422 +1,626 @@
-const menuToggle = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
-
-if (menuToggle && navMenu) {
-
-    menuToggle.addEventListener("click", () => {
-
-        const isOpen = navMenu.classList.toggle("open");
-
-        menuToggle.setAttribute(
-            "aria-expanded",
-            isOpen
-        );
-
-    });
+/* ==================================================
+   XCOTHIC
+   MAIN SCRIPT
+================================================== */
 
 
-    // Tutup menu ketika link diklik
+/* ==================================================
+   ELEMENTS
+================================================== */
 
-    const navLinks = navMenu.querySelectorAll(".nav-link");
+const accountModal =
+    document.getElementById("accountModal");
 
-    navLinks.forEach((link) => {
+const openLogin =
+    document.getElementById("openLogin");
 
-        link.addEventListener("click", () => {
+const navRegister =
+    document.getElementById("navRegister");
 
-            navMenu.classList.remove("open");
+const closeAccountModal =
+    document.getElementById("closeAccountModal");
 
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
+const loginForm =
+    document.getElementById("loginForm");
+
+const registerForm =
+    document.getElementById("registerForm");
+
+const showRegister =
+    document.getElementById("showRegister");
+
+const showLogin =
+    document.getElementById("showLogin");
+
+const loginFormElement =
+    document.getElementById("loginFormElement");
+
+const registerFormElement =
+    document.getElementById("registerFormElement");
+
+const authGuest =
+    document.getElementById("authGuest");
+
+const authUser =
+    document.getElementById("authUser");
+
+const userButton =
+    document.getElementById("userButton");
+
+
+/* ==================================================
+   ACCOUNT STORAGE
+================================================== */
+
+const ACCOUNTS_KEY =
+    "xcothic_accounts";
+
+const CURRENT_ACCOUNT_KEY =
+    "xcothic_current_account";
+
+
+function getAccounts() {
+
+    return JSON.parse(
+        localStorage.getItem(ACCOUNTS_KEY)
+    ) || [];
+
+}
+
+
+function saveAccounts(accounts) {
+
+    localStorage.setItem(
+        ACCOUNTS_KEY,
+        JSON.stringify(accounts)
+    );
+
+}
+
+
+/* ==================================================
+   MODAL
+================================================== */
+
+function openAccountModal() {
+
+    accountModal.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+function closeModal() {
+
+    accountModal.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+}
+
+
+openLogin.addEventListener(
+    "click",
+    function () {
+
+        openAccountModal();
+
+        showLoginForm();
+
+    }
+);
+
+
+navRegister.addEventListener(
+    "click",
+    function () {
+
+        openAccountModal();
+
+        showRegisterForm();
+
+    }
+);
+
+
+closeAccountModal.addEventListener(
+    "click",
+    closeModal
+);
+
+
+accountModal.addEventListener(
+    "click",
+    function (event) {
+
+        if (event.target === accountModal) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape" &&
+            accountModal.classList.contains("active")
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/* ==================================================
+   SWITCH LOGIN / REGISTER
+================================================== */
+
+function showLoginForm() {
+
+    loginForm.classList.add("active");
+
+    registerForm.classList.remove("active");
+
+}
+
+
+function showRegisterForm() {
+
+    registerForm.classList.add("active");
+
+    loginForm.classList.remove("active");
+
+}
+
+
+showRegister.addEventListener(
+    "click",
+    showRegisterForm
+);
+
+
+showLogin.addEventListener(
+    "click",
+    showLoginForm
+);
+
+
+/* ==================================================
+   REGISTER
+================================================== */
+
+registerFormElement.addEventListener(
+    "submit",
+    function (event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document
+                .getElementById("registerName")
+                .value
+                .trim();
+
+
+        const email =
+            document
+                .getElementById("registerEmail")
+                .value
+                .trim()
+                .toLowerCase();
+
+
+        const password =
+            document
+                .getElementById("registerPassword")
+                .value;
+
+
+        const confirmPassword =
+            document
+                .getElementById("registerConfirmPassword")
+                .value;
+
+
+        /* CHECK PASSWORD */
+
+        if (password !== confirmPassword) {
+
+            alert("Password tidak sama.");
+
+            return;
+
+        }
+
+
+        /* PASSWORD MINIMUM */
+
+        if (password.length < 6) {
+
+            alert(
+                "Password minimal 6 karakter."
             );
 
-        });
+            return;
 
-    });
-
-}
-const shopProductGrid = document.getElementById("shopProductGrid");
-
-if (shopProductGrid) {
-
-    if (products.length === 0) {
-
-        shopProductGrid.innerHTML = `
-            <div class="shop-empty">
-                <span>COMING SOON</span>
-
-                <p>
-                    XCOTHIC products are currently
-                    being prepared.
-                </p>
-            </div>
-        `;
-
-    }
-
-}/* =========================================
-   XCOTHIC CART SYSTEM
-   ========================================= */
-
-const XCOTHIC_CART_KEY = "xcothic_cart";
+        }
 
 
-/* -----------------------------------------
-   GET CART
------------------------------------------ */
+        /* GET ACCOUNTS */
 
-function getCart() {
-    try {
-        const cart = JSON.parse(
-            localStorage.getItem(XCOTHIC_CART_KEY)
+        const accounts =
+            getAccounts();
+
+
+        /* CHECK EMAIL */
+
+        const existingAccount =
+            accounts.find(
+                account =>
+                    account.email === email
+            );
+
+
+        if (existingAccount) {
+
+            alert(
+                "Email sudah terdaftar."
+            );
+
+            return;
+
+        }
+
+
+        /* CREATE ACCOUNT */
+
+        const newAccount = {
+
+            id:
+                Date.now(),
+
+            name:
+                name,
+
+            email:
+                email,
+
+            password:
+                password,
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+        accounts.push(newAccount);
+
+
+        saveAccounts(accounts);
+
+
+        /* AUTO LOGIN */
+
+        localStorage.setItem(
+            CURRENT_ACCOUNT_KEY,
+            email
         );
 
-        return Array.isArray(cart) ? cart : [];
-    } catch (error) {
-        return [];
+
+        alert(
+            "Akun berhasil dibuat."
+        );
+
+
+        registerFormElement.reset();
+
+
+        closeModal();
+
+
+        updateNavbarAccount();
+
     }
-}
+);
 
 
-/* -----------------------------------------
-   SAVE CART
------------------------------------------ */
+/* ==================================================
+   LOGIN
+================================================== */
 
-function saveCart(cart) {
-    localStorage.setItem(
-        XCOTHIC_CART_KEY,
-        JSON.stringify(cart)
-    );
-}
+loginFormElement.addEventListener(
+    "submit",
+    function (event) {
 
-
-/* -----------------------------------------
-   CART COUNT
------------------------------------------ */
-
-function updateCartCount() {
-
-    const cart = getCart();
-
-    const totalQuantity = cart.reduce(
-        (total, item) => total + item.quantity,
-        0
-    );
-
-    /* Existing cart count */
-    const cartCounts = document.querySelectorAll(
-        ".cart-count"
-    );
-
-    cartCounts.forEach((count) => {
-        count.textContent = totalQuantity;
-    });
+        event.preventDefault();
 
 
-    /* Product page / alternative cart format */
-    const navCartCounts = document.querySelectorAll(
-        ".nav-cart span"
-    );
-
-    navCartCounts.forEach((count) => {
-        count.textContent = totalQuantity;
-    });
-}
+        const email =
+            document
+                .getElementById("loginEmail")
+                .value
+                .trim()
+                .toLowerCase();
 
 
-/* -----------------------------------------
-   ADD PRODUCT TO CART
------------------------------------------ */
+        const password =
+            document
+                .getElementById("loginPassword")
+                .value;
 
-function addToCart(product) {
 
-    const cart = getCart();
+        const accounts =
+            getAccounts();
 
-    const existingProduct = cart.find(
-        (item) =>
-            item.id === product.id &&
-            item.size === product.size
-    );
 
-    if (existingProduct) {
+        const account =
+            accounts.find(
+                item =>
+                    item.email === email &&
+                    item.password === password
+            );
 
-        existingProduct.quantity += product.quantity;
+
+        if (!account) {
+
+            alert(
+                "Email atau password salah."
+            );
+
+            return;
+
+        }
+
+
+        /* SAVE CURRENT ACCOUNT */
+
+        localStorage.setItem(
+            CURRENT_ACCOUNT_KEY,
+            account.email
+        );
+
+
+        alert(
+            "Login berhasil. Selamat datang, " +
+            account.name + "!"
+        );
+
+
+        loginFormElement.reset();
+
+
+        closeModal();
+
+
+        updateNavbarAccount();
+
+    }
+);
+
+
+/* ==================================================
+   NAVBAR ACCOUNT STATE
+================================================== */
+
+function updateNavbarAccount() {
+
+    const currentAccount =
+        localStorage.getItem(
+            CURRENT_ACCOUNT_KEY
+        );
+
+
+    if (currentAccount) {
+
+        authGuest.style.display = "none";
+
+        authUser.classList.add("active");
 
     } else {
 
-        cart.push(product);
+        authGuest.style.display = "flex";
+
+        authUser.classList.remove("active");
 
     }
 
-    saveCart(cart);
-
-    updateCartCount();
-
-    showCartMessage(
-        `${product.name} added to cart`
-    );
 }
 
 
-/* -----------------------------------------
-   CART MESSAGE
------------------------------------------ */
+/* ==================================================
+   USER ICON
+================================================== */
 
-function showCartMessage(message) {
+userButton.addEventListener(
+    "click",
+    function () {
 
-    const oldMessage =
-        document.querySelector(".cart-message");
-
-    if (oldMessage) {
-        oldMessage.remove();
-    }
-
-    const messageBox =
-        document.createElement("div");
-
-    messageBox.className = "cart-message";
-
-    messageBox.textContent = message;
-
-    document.body.appendChild(messageBox);
-
-    setTimeout(() => {
-        messageBox.classList.add("show");
-    }, 10);
-
-    setTimeout(() => {
-
-        messageBox.classList.remove("show");
-
-        setTimeout(() => {
-            messageBox.remove();
-        }, 250);
-
-    }, 2000);
-}
+        const currentAccount =
+            localStorage.getItem(
+                CURRENT_ACCOUNT_KEY
+            );
 
 
-/* -----------------------------------------
-   PRODUCT PAGE
------------------------------------------ */
+        if (!currentAccount) {
 
-const addCartButton =
-    document.querySelector(".add-cart-btn");
-
-if (addCartButton) {
-
-    addCartButton.addEventListener(
-        "click",
-        () => {
-
-            const productName =
-                document.querySelector(
-                    ".product-detail-info h1"
-                )?.textContent.trim()
-                || "XCOTHIC Product";
-
-            const priceText =
-                document.querySelector(
-                    ".product-price"
-                )?.textContent
-                || "Rp 0";
-
-            const price =
-                Number(
-                    priceText
-                        .replace(/[^0-9]/g, "")
-                ) || 0;
-
-            const sizeSelect =
-                document.querySelector("#size");
-
-            const selectedSize =
-                sizeSelect?.value || "";
-
-            const quantityElement =
-                document.querySelector(
-                    ".quantity-control span"
-                );
-
-            const quantity =
-                Number(
-                    quantityElement?.textContent
-                ) || 1;
-
-            const product = {
-
-                id: productName
-                    .toLowerCase()
-                    .replace(/\s+/g, "-"),
-
-                name: productName,
-
-                price: price,
-
-                size: selectedSize,
-
-                quantity: quantity
-
-            };
-
-            addToCart(product);
+            return;
 
         }
-    );
-}
 
 
-/* -----------------------------------------
-   QUANTITY CONTROL
------------------------------------------ */
-
-const quantityControl =
-    document.querySelector(".quantity-control");
-
-if (quantityControl) {
-
-    const buttons =
-        quantityControl.querySelectorAll("button");
-
-    const quantityDisplay =
-        quantityControl.querySelector("span");
-
-    let quantity = 1;
+        const accounts =
+            getAccounts();
 
 
-    if (buttons.length >= 2) {
+        const account =
+            accounts.find(
+                item =>
+                    item.email === currentAccount
+            );
 
-        /* MINUS */
 
-        buttons[0].addEventListener(
-            "click",
-            () => {
+        if (!account) {
 
-                if (quantity > 1) {
-                    quantity--;
+            return;
+
+        }
+
+
+        const logout =
+            confirm(
+                "Login sebagai " +
+                account.name +
+                ".\n\nKlik OK untuk logout."
+            );
+
+
+        if (logout) {
+
+            localStorage.removeItem(
+                CURRENT_ACCOUNT_KEY
+            );
+
+            updateNavbarAccount();
+
+        }
+
+    }
+);
+
+
+/* ==================================================
+   SEARCH
+================================================== */
+
+const navSearch =
+    document.getElementById("navSearch");
+
+
+navSearch.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (event.key !== "Enter") {
+
+            return;
+
+        }
+
+
+        const keyword =
+            navSearch.value
+                .trim()
+                .toLowerCase();
+
+
+        if (!keyword) {
+
+            return;
+
+        }
+
+
+        const products =
+            document.querySelectorAll(
+                ".product-card"
+            );
+
+
+        let found = false;
+
+
+        products.forEach(
+            function (product) {
+
+                const text =
+                    product.textContent
+                        .toLowerCase();
+
+
+                if (text.includes(keyword)) {
+
+                    product.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+
+                    found = true;
+
                 }
 
-                quantityDisplay.textContent =
-                    quantity;
             }
         );
 
 
-        /* PLUS */
+        if (!found) {
 
-        buttons[1].addEventListener(
-            "click",
-            () => {
+            alert(
+                "Produk \"" +
+                keyword +
+                "\" belum ditemukan."
+            );
 
-                quantity++;
-
-                quantityDisplay.textContent =
-                    quantity;
-            }
-        );
+        }
 
     }
+);
+
+
+/* ==================================================
+   CART
+================================================== */
+
+function updateCartCount() {
+
+    const cartCount =
+        document.getElementById(
+            "cartCount"
+        );
+
+
+    const cart =
+        JSON.parse(
+            localStorage.getItem(
+                "xcothic_cart"
+            )
+        ) || [];
+
+
+    let totalItems = 0;
+
+
+    cart.forEach(
+        function (item) {
+
+            totalItems +=
+                Number(item.quantity) || 0;
+
+        }
+    );
+
+
+    cartCount.textContent =
+        totalItems;
+
 }
 
 
-/* -----------------------------------------
-   CART LINK
------------------------------------------ */
+/* ==================================================
+   INITIALIZE
+================================================== */
 
-const cartLinks =
-    document.querySelectorAll(
-        ".cart, .nav-cart"
-    );
-
-cartLinks.forEach((cartLink) => {
-
-    cartLink.setAttribute(
-        "href",
-        "cart.html"
-    );
-
-});
-
-
-/* -----------------------------------------
-   INITIALIZE CART
------------------------------------------ */
+updateNavbarAccount();
 
 updateCartCount();
-
-
-/* -----------------------------------------
-   CART MESSAGE STYLE
------------------------------------------ */
-
-if (!document.getElementById(
-    "xcothic-cart-style"
-)) {
-
-    const cartStyle =
-        document.createElement("style");
-
-    cartStyle.id =
-        "xcothic-cart-style";
-
-    cartStyle.textContent = `
-
-        .cart-message {
-            position: fixed;
-            left: 50%;
-            bottom: 30px;
-
-            transform:
-                translate(-50%, 20px);
-
-            padding: 14px 22px;
-
-            background: #082f72;
-            color: #ffffff;
-
-            font-family: "Inter", sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-
-            letter-spacing: 1px;
-
-            opacity: 0;
-
-            z-index: 9999;
-
-            pointer-events: none;
-
-            transition:
-                opacity 0.25s ease,
-                transform 0.25s ease;
-        }
-
-
-        .cart-message.show {
-
-            opacity: 1;
-
-            transform:
-                translate(-50%, 0);
-
-        }
-
-
-        @media (max-width: 480px) {
-
-            .cart-message {
-
-                width: calc(100% - 30px);
-
-                text-align: center;
-
-                bottom: 20px;
-
-            }
-
-        }
-
-    `;
-
-    document.head.appendChild(cartStyle);
-}
