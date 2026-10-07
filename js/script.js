@@ -35,3 +35,23 @@ if (menuToggle && navMenu) {
     });
 
 }
+const shopProductGrid = document.getElementById("shopProductGrid");
+
+if (shopProductGrid) {
+
+    if (products.length === 0) {
+
+        shopProductGrid.innerHTML = `
+            <div class="shop-empty">
+                <span>COMING SOON</span>
+
+                <p>
+                    XCOTHIC products are currently
+                    being prepared.
+                </p>
+            </div>
+        `;
+
+    }
+
+}

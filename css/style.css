@@ -844,3 +844,161 @@ h2,
     }
 
 }
+/* ========================================
+   SHOP PAGE
+======================================== */
+
+.shop-navbar {
+    position: relative;
+
+    background: var(--deep-blue);
+}
+
+
+/* ========================================
+   SHOP HERO
+======================================== */
+
+.shop-hero {
+    padding:
+        clamp(90px, 12vw, 150px)
+        0
+        clamp(60px, 8vw, 100px);
+
+    background: var(--soft-blue);
+
+    color: var(--deep-blue);
+}
+
+.shop-hero h1 {
+    margin-top: 8px;
+
+    font-size: clamp(90px, 15vw, 180px);
+
+    line-height: 0.8;
+}
+
+.shop-intro {
+    max-width: 450px;
+
+    margin-top: 25px;
+
+    font-size: 14px;
+
+    color: #53647c;
+}
+
+
+/* ========================================
+   SHOP PRODUCTS
+======================================== */
+
+.shop-products {
+    padding:
+        clamp(60px, 8vw, 110px)
+        0
+        clamp(80px, 10vw, 140px);
+
+    background: #ffffff;
+}
+
+.shop-toolbar {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid rgba(8, 47, 114, 0.12);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.shop-toolbar span {
+    color: #718096;
+}
+
+
+/* ========================================
+   EMPTY SHOP
+======================================== */
+
+.shop-product-grid {
+    min-height: 420px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.shop-empty {
+    max-width: 400px;
+
+    padding: 60px 30px;
+
+    text-align: center;
+}
+
+.shop-empty span {
+    display: block;
+
+    font-family: "Bebas Neue", sans-serif;
+
+    font-size: clamp(55px, 8vw, 85px);
+
+    line-height: 0.9;
+
+    color: var(--deep-blue);
+}
+
+.shop-empty p {
+    margin-top: 20px;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+    color: #718096;
+}
+
+
+/* ========================================
+   SHOP MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+    .shop-hero {
+        padding-top: 90px;
+    }
+
+    .shop-hero h1 {
+        font-size: 95px;
+    }
+
+    .shop-toolbar {
+        font-size: 9px;
+    }
+
+    .shop-product-grid {
+        min-height: 350px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .shop-hero h1 {
+        font-size: 80px;
+    }
+
+    .shop-empty span {
+        font-size: 60px;
+    }
+
+}
