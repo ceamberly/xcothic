@@ -1,23 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>XCOTHIC — Official Store</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- FONT -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet"
     >
 
-    <link rel="stylesheet" href="css/style.css">
+
+    <!-- MAIN CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+
+    <style>
+
+        /* ==================================================
+           PRODUCT
+        ================================================== */
+
+        .product-card {
+            overflow: hidden;
+
+            background: #ffffff;
+
+            border-radius: 24px;
+
+            border: 1px solid
+                rgba(8, 47, 114, 0.08);
+
+            box-shadow:
+                0 12px 35px
+                rgba(8, 47, 114, 0.06);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        .product-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                0 20px 45px
+                rgba(8, 47, 114, 0.1);
+
+        }
+
+
+        /* ==================================================
+           PRODUCT IMAGE
+        ================================================== */
+
+        .product-image {
+
+            width: 100%;
+
+            background: #ffffff;
+
+            overflow: hidden;
+
+            line-height: 0;
+        }
+
+
+        .product-image img {
+
+            width: 100%;
+
+            height: auto;
+
+            display: block;
+
+            object-fit: contain;
+
+        }
+
+
+        /* ==================================================
+           PRODUCT INFO
+        ================================================== */
+
+        .product-info {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 20px;
+
+        }
+
+
+        .product-info-content {
+
+            min-width: 0;
+
+        }
+
+
+        .product-category {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #28a8dc;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.14em;
+
+        }
+
+
+        .product-name {
+
+            margin: 0 0 8px;
+
+            color: #082f72;
+
+            font-family:
+                "Bebas Neue",
+                sans-serif;
+
+            font-size: 28px;
+
+            line-height: 1;
+
+        }
+
+
+        .product-price {
+
+            margin: 0;
+
+            color: #555;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+        }
+
+
+        /* ==================================================
+           ADD TO CART
+        ================================================== */
+
+        .add-cart-btn {
+
+            flex-shrink: 0;
+
+            min-height: 42px;
+
+            padding: 0 19px;
+
+            border: 0;
+
+            border-radius: 999px;
+
+            background: #082f72;
+
+            color: #ffffff;
+
+            font-family:
+                "Inter",
+                sans-serif;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.08em;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+
+        }
+
+
+        .add-cart-btn:hover {
+
+            background: #28a8dc;
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .add-cart-btn.added {
+
+            background: #28a8dc;
+
+        }
+
+
+        /* ==================================================
+           COMING SOON
+        ================================================== */
+
+        .coming-soon {
+
+            width: 100%;
+
+            aspect-ratio: 3 / 2;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+
+                radial-gradient(
+                    circle at center,
+                    rgba(40, 168, 220, 0.12),
+                    transparent 60%
+                ),
+
+                #eef3f7;
+
+            text-align: center;
+
+        }
+
+
+        .coming-soon span {
+
+            color: #082f72;
+
+            font-family:
+                "Bebas Neue",
+                sans-serif;
+
+            font-size: 34px;
+
+        }
+
+
+        .coming-soon small {
+
+            margin-top: 8px;
+
+            color: #28a8dc;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.15em;
+
+        }
+
+
+        /* ==================================================
+           MOBILE
+        ================================================== */
+
+        @media (max-width: 600px) {
+
+            .product-info {
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 15px;
+
+            }
+
+
+            .add-cart-btn {
+
+                width: 100%;
+
+            }
+
+        }
+
+    </style>
+
 </head>
 
+
 <body>
+
 
     <!-- ==================================================
          NAVBAR
@@ -27,25 +338,46 @@
 
         <div class="nav-container">
 
+
             <!-- LOGO -->
-            <a href="index.html" class="logo" aria-label="XCOTHIC">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="XCOTHIC"
+            >
+
                 <span>XCO</span>
+
             </a>
 
 
-            <!-- NAV RIGHT -->
+            <!-- NAV ACTIONS -->
+
             <div class="nav-actions">
 
+
                 <!-- SEARCH -->
+
                 <div class="nav-search">
 
                     <svg
                         viewBox="0 0 24 24"
                         aria-hidden="true"
                     >
-                        <circle cx="11" cy="11" r="7"></circle>
-                        <path d="M16.5 16.5L21 21"></path>
+
+                        <circle
+                            cx="11"
+                            cy="11"
+                            r="7"
+                        ></circle>
+
+                        <path
+                            d="M16.5 16.5L21 21"
+                        ></path>
+
                     </svg>
+
 
                     <input
                         type="text"
@@ -58,10 +390,16 @@
 
 
                 <!-- ACCOUNT -->
+
                 <div class="nav-auth">
 
-                    <!-- BELUM LOGIN -->
-                    <div class="auth-guest" id="authGuest">
+
+                    <!-- GUEST -->
+
+                    <div
+                        class="auth-guest"
+                        id="authGuest"
+                    >
 
                         <button
                             type="button"
@@ -70,6 +408,7 @@
                         >
                             REGISTER
                         </button>
+
 
                         <button
                             type="button"
@@ -82,7 +421,8 @@
                     </div>
 
 
-                    <!-- SUDAH LOGIN -->
+                    <!-- USER -->
+
                     <div
                         class="auth-user"
                         id="authUser"
@@ -100,6 +440,7 @@
                                 viewBox="0 0 24 24"
                                 aria-hidden="true"
                             >
+
                                 <circle
                                     cx="12"
                                     cy="8"
@@ -120,6 +461,7 @@
 
 
                 <!-- CART -->
+
                 <a
                     href="cart.html"
                     class="cart-button"
@@ -150,6 +492,7 @@
 
                     </svg>
 
+
                     <span
                         class="cart-count"
                         id="cartCount"
@@ -159,11 +502,13 @@
 
                 </a>
 
+
             </div>
 
         </div>
 
     </header>
+
 
 
     <!-- ==================================================
@@ -172,21 +517,26 @@
 
     <main>
 
+
         <section class="hero">
 
             <div class="hero-content">
+
 
                 <span class="hero-small">
                     SINCE 2024
                 </span>
 
+
                 <h1>
                     XCOTHIC
                 </h1>
 
+
                 <p>
                     BUILT FOR THOSE WHO MOVE DIFFERENT.
                 </p>
+
 
                 <a
                     href="#collection"
@@ -195,9 +545,11 @@
                     EXPLORE COLLECTION
                 </a>
 
+
             </div>
 
         </section>
+
 
 
         <!-- ==================================================
@@ -209,17 +561,22 @@
             id="collection"
         >
 
+
             <div class="section-header">
 
                 <div>
+
                     <span class="section-label">
                         XCOTHIC COLLECTION
                     </span>
 
+
                     <h2>
                         FEATURED
                     </h2>
+
                 </div>
+
 
                 <a
                     href="#"
@@ -231,85 +588,126 @@
             </div>
 
 
+
             <div class="product-grid">
 
-                <article class="product-card">
+
+                <!-- ==================================================
+                     PRODUCT 01
+                ================================================== -->
+
+                <article
+                    class="product-card"
+                    id="product-xct-tee-01"
+                >
+
+
+                    <!-- FOTO PRODUK -->
 
                     <div class="product-image">
-                        <span>
-                            COMING SOON
-                        </span>
 
-                        <small>
-                            01
-                        </small>
+                        <img
+                            src="images/LoWKeY.jpeg"
+                            alt="XCOTHIC TEE 01"
+                        >
+
                     </div>
+
+
+                    <!-- PRODUCT INFO -->
 
                     <div class="product-info">
-                        <h3>
-                            XCOTHIC COLLECTION
-                        </h3>
 
-                        <p>
-                            COMING SOON
-                        </p>
+
+                        <div class="product-info-content">
+
+                            <span class="product-category">
+                                T-SHIRTS
+                            </span>
+
+
+                            <h3 class="product-name">
+                                XCOTHIC TEE 01
+                            </h3>
+
+
+                            <p class="product-price">
+                                Rp 199.000
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="add-cart-btn"
+                            id="addProduct01"
+                        >
+                            ADD TO CART
+                        </button>
+
+
                     </div>
+
 
                 </article>
 
 
+
+                <!-- ==================================================
+                     COMING SOON 02
+                ================================================== -->
+
                 <article class="product-card">
 
-                    <div class="product-image">
+
+                    <div class="coming-soon">
+
                         <span>
                             COMING SOON
                         </span>
 
+
                         <small>
-                            02
-                        </small>
-                    </div>
-
-                    <div class="product-info">
-                        <h3>
                             XCOTHIC COLLECTION
-                        </h3>
+                        </small>
 
-                        <p>
-                            COMING SOON
-                        </p>
                     </div>
+
 
                 </article>
 
 
+
+                <!-- ==================================================
+                     COMING SOON 03
+                ================================================== -->
+
                 <article class="product-card">
 
-                    <div class="product-image">
+
+                    <div class="coming-soon">
+
                         <span>
                             COMING SOON
                         </span>
 
+
                         <small>
-                            03
-                        </small>
-                    </div>
-
-                    <div class="product-info">
-                        <h3>
                             XCOTHIC COLLECTION
-                        </h3>
+                        </small>
 
-                        <p>
-                            COMING SOON
-                        </p>
                     </div>
+
 
                 </article>
+
 
             </div>
 
+
         </section>
+
 
 
         <!-- ==================================================
@@ -320,14 +718,17 @@
 
             <div class="about-content">
 
+
                 <span class="section-label">
                     ABOUT XCOTHIC
                 </span>
+
 
                 <h2>
                     MADE TO<br>
                     STAND OUT.
                 </h2>
+
 
                 <p>
                     XCOTHIC is built for people who choose
@@ -336,9 +737,11 @@
                     refuses to follow the ordinary.
                 </p>
 
+
             </div>
 
         </section>
+
 
 
         <!-- ==================================================
@@ -349,14 +752,17 @@
 
             <div class="cta-content">
 
+
                 <span class="section-label">
                     STAY DIFFERENT
                 </span>
+
 
                 <h2>
                     SOMETHING NEW<br>
                     IS COMING.
                 </h2>
+
 
                 <a
                     href="#collection"
@@ -365,11 +771,14 @@
                     SHOP XCOTHIC
                 </a>
 
+
             </div>
 
         </section>
 
+
     </main>
+
 
 
     <!-- ==================================================
@@ -378,7 +787,9 @@
 
     <footer class="footer">
 
+
         <div class="footer-inner">
+
 
             <div class="footer-brand">
 
@@ -386,11 +797,13 @@
                     XCOTHIC
                 </span>
 
+
                 <p>
                     BUILT FOR THOSE WHO MOVE DIFFERENT.
                 </p>
 
             </div>
+
 
             <div class="footer-bottom">
 
@@ -398,15 +811,18 @@
                     © 2024 XCOTHIC
                 </span>
 
+
                 <span>
                     ALL RIGHTS RESERVED
                 </span>
 
             </div>
 
+
         </div>
 
     </footer>
+
 
 
     <!-- ==================================================
@@ -418,7 +834,9 @@
         id="accountModal"
     >
 
+
         <div class="account-modal-box">
+
 
             <button
                 type="button"
@@ -437,25 +855,31 @@
                 id="loginForm"
             >
 
+
                 <span class="auth-label">
                     XCOTHIC ACCOUNT
                 </span>
+
 
                 <h2>
                     LOGIN
                 </h2>
 
+
                 <p>
                     Sign in to your XCOTHIC account.
                 </p>
 
+
                 <form id="loginFormElement">
+
 
                     <div class="input-group">
 
                         <label for="loginEmail">
                             EMAIL
                         </label>
+
 
                         <input
                             type="email"
@@ -472,6 +896,7 @@
                         <label for="loginPassword">
                             PASSWORD
                         </label>
+
 
                         <input
                             type="password"
@@ -490,6 +915,7 @@
                         LOGIN
                     </button>
 
+
                 </form>
 
 
@@ -498,6 +924,7 @@
                     <span>
                         Don't have an account?
                     </span>
+
 
                     <button
                         type="button"
@@ -508,7 +935,9 @@
 
                 </div>
 
+
             </div>
+
 
 
             <!-- REGISTER -->
@@ -518,25 +947,31 @@
                 id="registerForm"
             >
 
+
                 <span class="auth-label">
                     XCOTHIC ACCOUNT
                 </span>
+
 
                 <h2>
                     REGISTER
                 </h2>
 
+
                 <p>
                     Create your XCOTHIC account.
                 </p>
 
+
                 <form id="registerFormElement">
+
 
                     <div class="input-group">
 
                         <label for="registerName">
                             NAME
                         </label>
+
 
                         <input
                             type="text"
@@ -554,6 +989,7 @@
                             EMAIL
                         </label>
 
+
                         <input
                             type="email"
                             id="registerEmail"
@@ -570,6 +1006,7 @@
                             PASSWORD
                         </label>
 
+
                         <input
                             type="password"
                             id="registerPassword"
@@ -585,6 +1022,7 @@
                         <label for="registerConfirmPassword">
                             CONFIRM PASSWORD
                         </label>
+
 
                         <input
                             type="password"
@@ -603,6 +1041,7 @@
                         CREATE ACCOUNT
                     </button>
 
+
                 </form>
 
 
@@ -611,6 +1050,7 @@
                     <span>
                         Already have an account?
                     </span>
+
 
                     <button
                         type="button"
@@ -621,14 +1061,252 @@
 
                 </div>
 
+
             </div>
+
 
         </div>
 
     </div>
 
 
-    <script src="js/script.js"></script>
+
+    <!-- ==================================================
+         PRODUCT CART SCRIPT
+    ================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+
+                const addButton =
+                    document.getElementById(
+                        "addProduct01"
+                    );
+
+
+                const cartCount =
+                    document.getElementById(
+                        "cartCount"
+                    );
+
+
+
+                /* =========================================
+                   GET CART
+                ========================================= */
+
+                function getCart() {
+
+                    try {
+
+                        const saved =
+                            localStorage.getItem(
+                                "xcothic_cart"
+                            );
+
+
+                        if (!saved) {
+
+                            return [];
+
+                        }
+
+
+                        const parsed =
+                            JSON.parse(saved);
+
+
+                        return Array.isArray(parsed)
+                            ? parsed
+                            : [];
+
+
+                    } catch (error) {
+
+                        return [];
+
+                    }
+
+                }
+
+
+
+                /* =========================================
+                   SAVE CART
+                ========================================= */
+
+                function saveCart(cart) {
+
+                    localStorage.setItem(
+                        "xcothic_cart",
+                        JSON.stringify(cart)
+                    );
+
+                }
+
+
+
+                /* =========================================
+                   UPDATE CART COUNT
+                ========================================= */
+
+                function updateCartCount() {
+
+                    const cart =
+                        getCart();
+
+
+                    let total = 0;
+
+
+                    cart.forEach(
+                        function (item) {
+
+                            total += Number(
+                                item.quantity || 1
+                            );
+
+                        }
+                    );
+
+
+                    if (cartCount) {
+
+                        cartCount.textContent =
+                            total;
+
+                    }
+
+                }
+
+
+
+                /* =========================================
+                   ADD PRODUCT
+                ========================================= */
+
+                if (addButton) {
+
+                    addButton.addEventListener(
+                        "click",
+                        function () {
+
+
+                            const cart =
+                                getCart();
+
+
+                            const existing =
+                                cart.find(
+                                    function (item) {
+
+                                        return item.id ===
+                                            "xct-tee-01";
+
+                                    }
+                                );
+
+
+
+                            if (existing) {
+
+                                existing.quantity =
+                                    Number(
+                                        existing.quantity || 1
+                                    ) + 1;
+
+                            } else {
+
+                                cart.push({
+
+                                    id:
+                                        "xct-tee-01",
+
+                                    name:
+                                        "XCOTHIC TEE 01",
+
+                                    category:
+                                        "T-SHIRTS",
+
+                                    price:
+                                        199000,
+
+                                    image:
+                                        "images/LoWKeY.jpeg",
+
+                                    quantity:
+                                        1
+
+                                });
+
+                            }
+
+
+
+                            saveCart(cart);
+
+                            updateCartCount();
+
+
+
+                            /* BUTTON FEEDBACK */
+
+                            addButton.textContent =
+                                "ADDED ✓";
+
+
+                            addButton.classList.add(
+                                "added"
+                            );
+
+
+                            setTimeout(
+                                function () {
+
+                                    addButton.textContent =
+                                        "ADD TO CART";
+
+                                    addButton.classList.remove(
+                                        "added"
+                                    );
+
+                                },
+                                1200
+                            );
+
+
+                        }
+                    );
+
+                }
+
+
+
+                /* =========================================
+                   INITIAL COUNT
+                ========================================= */
+
+                updateCartCount();
+
+
+            }
+        );
+
+    </script>
+
+
+
+    <!-- MAIN SCRIPT -->
+
+    <script
+        src="js/script.js"
+    ></script>
+
 
 </body>
+
 </html>
