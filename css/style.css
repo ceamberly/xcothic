@@ -1,6 +1,6 @@
-/* =========================
+/* ========================================
    RESET
-========================= */
+======================================== */
 
 * {
     margin: 0;
@@ -14,395 +14,833 @@ html {
 
 body {
     font-family: "Inter", sans-serif;
-    background: #ffffff;
     color: #082f72;
+    background: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
 }
 
 
-/* =========================
+/* ========================================
+   VARIABLES
+======================================== */
+
+:root {
+    --deep-blue: #082f72;
+    --blue: #28a8dc;
+    --light-blue: #50b8e0;
+    --soft-blue: #f4f9fc;
+    --white: #ffffff;
+    --black: #0b0b0b;
+
+    --container: 1280px;
+}
+
+
+/* ========================================
+   GLOBAL
+======================================== */
+
+.section-container {
+    width: min(100% - 40px, var(--container));
+    margin-inline: auto;
+}
+
+.section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--blue);
+}
+
+h1,
+h2,
+.logo {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+}
+
+
+/* ========================================
    NAVBAR
-========================= */
+======================================== */
 
 .navbar {
-    width: 100%;
-    background: #ffffff;
-    border-bottom: 1px solid rgba(8, 47, 114, 0.12);
-    position: sticky;
+    position: absolute;
     top: 0;
-    z-index: 1000;
+    left: 0;
+
+    width: 100%;
+    z-index: 100;
+
+    color: var(--white);
 }
 
-.navbar-container {
-    max-width: 1400px;
-    height: 80px;
+.nav-container {
+    width: min(100% - 40px, var(--container));
+    min-height: 80px;
 
-    margin: 0 auto;
-    padding: 0 40px;
+    margin-inline: auto;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-
-/* Logo */
-
 .logo {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 38px;
-    letter-spacing: 2px;
-    color: #082f72;
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: 1px;
 }
-
-
-/* Navigation */
 
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 35px;
+    gap: 34px;
 }
 
-.nav-menu a {
-    font-size: 14px;
+.nav-link {
+    position: relative;
+
+    font-size: 11px;
     font-weight: 600;
-    color: #082f72;
+    letter-spacing: 2px;
 
-    transition: 0.3s ease;
+    opacity: 0.8;
+    transition: opacity 0.25s ease;
 }
 
-.nav-menu a:hover,
-.nav-menu a.active {
-    color: #28a8dc;
+.nav-link:hover,
+.nav-link.active {
+    opacity: 1;
 }
 
+.nav-link::after {
+    content: "";
 
-/* Cart */
+    position: absolute;
+    left: 0;
+    bottom: -7px;
 
-.cart {
+    width: 0;
+    height: 1px;
+
+    background: var(--white);
+
+    transition: width 0.25s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-actions {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 22px;
+}
 
-    font-size: 14px;
+.cart {
+    font-size: 11px;
     font-weight: 600;
+    letter-spacing: 2px;
 }
 
 .cart-count {
-    width: 22px;
-    height: 22px;
+    display: inline-flex;
 
-    display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+
+    width: 18px;
+    height: 18px;
+
+    margin-left: 5px;
 
     border-radius: 50%;
 
-    background: #28a8dc;
-    color: #ffffff;
+    background: var(--white);
+    color: var(--deep-blue);
 
-    font-size: 11px;
+    font-size: 9px;
+}
+
+.menu-toggle {
+    display: none;
+
+    width: 34px;
+    height: 34px;
+
+    padding: 5px;
+
+    border: 0;
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+
+    width: 100%;
+    height: 2px;
+
+    margin: 5px 0;
+
+    background: var(--white);
+
+    transition: 0.25s ease;
 }
 
 
-/* =========================
+/* ========================================
    HERO
-========================= */
+======================================== */
 
 .hero {
-    min-height: calc(100vh - 80px);
+    position: relative;
+
+    min-height: 100svh;
 
     display: flex;
     align-items: center;
 
     background:
         linear-gradient(
-            135deg,
+            120deg,
             #082f72 0%,
-            #146fa8 45%,
+            #166fae 45%,
             #28a8dc 100%
         );
 
-    color: #ffffff;
+    color: var(--white);
+}
 
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(255,255,255,0.12),
+            transparent 35%
+        );
+}
+
+.hero-content {
     position: relative;
-    overflow: hidden;
+    z-index: 2;
+
+    width: min(100% - 40px, var(--container));
+
+    margin-inline: auto;
+
+    padding-top: 80px;
+}
+
+.hero-label {
+    margin-bottom: 15px;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+.hero h1 {
+    font-size: clamp(90px, 18vw, 240px);
+    line-height: 0.8;
+    letter-spacing: 2px;
+}
+
+.hero-description {
+    margin-top: 28px;
+
+    font-size: clamp(12px, 1.5vw, 16px);
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+.hero-button,
+.cta-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 32px;
+    padding: 15px 25px;
+
+    border: 1px solid rgba(255,255,255,0.8);
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.hero-button:hover,
+.cta-button:hover {
+    background: var(--white);
+    color: var(--deep-blue);
 }
 
 
-/* Decorative circle */
+/* ========================================
+   FEATURED
+======================================== */
 
-.hero::after {
+.featured {
+    padding: clamp(70px, 10vw, 130px) 0;
+    background: var(--white);
+}
+
+.section-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+
+    margin-bottom: 45px;
+}
+
+.section-header h2 {
+    margin-top: 5px;
+
+    font-size: clamp(55px, 8vw, 100px);
+    line-height: 0.85;
+}
+
+.view-all {
+    position: relative;
+
+    padding-bottom: 5px;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.view-all::after {
     content: "";
 
     position: absolute;
+    left: 0;
+    bottom: 0;
 
-    width: 600px;
-    height: 600px;
-
-    right: -200px;
-    bottom: -250px;
-
-    border: 1px solid rgba(255, 255, 255, 0.2);
-
-    border-radius: 50%;
-}
-
-
-/* Hero content */
-
-.hero-content {
-    max-width: 1400px;
     width: 100%;
+    height: 1px;
 
-    margin: 0 auto;
-    padding: 80px 40px;
-
-    position: relative;
-    z-index: 2;
+    background: var(--deep-blue);
 }
 
 
-.hero-small {
-    font-size: 13px;
-    font-weight: 600;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 25px;
-
-    opacity: 0.85;
-}
-
-
-.hero h1 {
-    font-family: "Bebas Neue", sans-serif;
-
-    font-size: clamp(80px, 12vw, 180px);
-
-    line-height: 0.82;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 35px;
-}
-
-
-.hero-description {
-    max-width: 500px;
-
-    font-size: 16px;
-    line-height: 1.7;
-
-    opacity: 0.9;
-
-    margin-bottom: 35px;
-}
-
-
-/* Hero button */
-
-.hero-button {
-    display: inline-flex;
-
-    padding: 16px 35px;
-
-    background: #ffffff;
-    color: #082f72;
-
-    font-size: 13px;
-    font-weight: 700;
-
-    letter-spacing: 1px;
-
-    transition: 0.3s ease;
-}
-
-.hero-button:hover {
-    background: #082f72;
-    color: #ffffff;
-
-    transform: translateY(-3px);
-}
-
-
-/* =========================
-   FEATURED
-========================= */
-
-.featured {
-    max-width: 1400px;
-
-    margin: 0 auto;
-
-    padding: 120px 40px;
-}
-
-
-.section-header {
-    margin-bottom: 50px;
-}
-
-
-.section-label {
-    font-size: 12px;
-    font-weight: 700;
-
-    letter-spacing: 3px;
-
-    color: #28a8dc;
-
-    margin-bottom: 10px;
-}
-
-
-.section-header h2 {
-    font-family: "Bebas Neue", sans-serif;
-
-    font-size: 64px;
-
-    letter-spacing: 2px;
-
-    color: #082f72;
-}
-
-
-/* =========================
+/* ========================================
    PRODUCT GRID
-========================= */
+======================================== */
 
 .product-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(auto-fit, minmax(240px, 1fr));
 
-    gap: 25px;
+    gap: 20px;
 }
-
-
-/* Product card */
 
 .product-card {
-    cursor: pointer;
+    min-width: 0;
 }
 
-
-/* Product image */
-
 .product-image {
-    width: 100%;
-    aspect-ratio: 1 / 1;
+    position: relative;
 
-    background: #eef8fc;
+    aspect-ratio: 1 / 1.15;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    color: #28a8dc;
+    overflow: hidden;
 
-    font-size: 12px;
+    background: var(--soft-blue);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+.product-empty {
+    cursor: default;
+}
+
+.product-empty .product-image {
+    border: 1px solid rgba(8, 47, 114, 0.08);
+
+    background: #f4f9fc;
+
+    color: var(--blue);
+
+    cursor: default;
+}
+
+.product-empty .product-image:hover {
+    transform: none;
+    background: #f4f9fc;
+}
+
+.product-empty .product-image span {
+    font-size: 11px;
     font-weight: 600;
 
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 
-    transition: 0.3s ease;
-}
-
-.product-card:hover .product-image {
-    background: #dff3fa;
+    opacity: 0.7;
 }
 
 
-/* Product info */
+/* ========================================
+   ABOUT
+======================================== */
 
-.product-info {
-    padding-top: 18px;
+.about {
+    padding: clamp(80px, 12vw, 160px) 0;
+
+    background: var(--soft-blue);
 }
 
-.product-info h3 {
+.about-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+}
+
+.about-heading h2 {
+    margin-top: 12px;
+
+    font-size: clamp(60px, 8vw, 110px);
+    line-height: 0.82;
+}
+
+.about-content {
+    max-width: 520px;
+
+    align-self: center;
+}
+
+.about-content p {
+    margin-bottom: 20px;
+
     font-size: 15px;
+    line-height: 1.9;
 
+    color: #40516b;
+}
+
+.text-link {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding-bottom: 5px;
+
+    border-bottom: 1px solid var(--deep-blue);
+
+    font-size: 10px;
     font-weight: 700;
-
-    color: #082f72;
-
-    margin-bottom: 7px;
-}
-
-.product-info p {
-    font-size: 14px;
-
-    color: #28a8dc;
-
-    font-weight: 600;
+    letter-spacing: 2px;
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* ========================================
+   CTA
+======================================== */
 
-.footer {
-    padding: 40px;
+.cta {
+    padding: clamp(90px, 12vw, 160px) 20px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #082f72,
+            #28a8dc
+        );
+
+    color: var(--white);
 
     text-align: center;
+}
 
-    background: #082f72;
+.cta-content {
+    max-width: 700px;
+    margin-inline: auto;
+}
 
-    color: #ffffff;
+.cta h2 {
+    margin-top: 12px;
 
-    font-size: 12px;
+    font-size: clamp(65px, 10vw, 130px);
+    line-height: 0.82;
+}
+
+.cta p:not(.section-label) {
+    max-width: 480px;
+
+    margin: 30px auto 0;
+
+    font-size: 14px;
+
+    opacity: 0.85;
+}
+
+.cta-button {
+    margin-top: 30px;
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* ========================================
+   FOOTER
+======================================== */
 
-@media (max-width: 768px) {
+.footer {
+    background: #061f4c;
+    color: var(--white);
 
-    .navbar-container {
-        height: 70px;
+    padding-top: 70px;
+}
 
-        padding: 0 20px;
+.footer-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 60px;
+
+    padding-bottom: 60px;
+}
+
+.footer-brand {
+    max-width: 300px;
+}
+
+.footer-brand .logo {
+    font-size: 42px;
+}
+
+.footer-brand p {
+    margin-top: 15px;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    opacity: 0.6;
+}
+
+.footer-links {
+    display: flex;
+    gap: 100px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.footer-column h3 {
+    margin-bottom: 10px;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    color: var(--light-blue);
+}
+
+.footer-column a {
+    font-size: 10px;
+    letter-spacing: 1px;
+
+    opacity: 0.65;
+
+    transition: opacity 0.2s ease;
+}
+
+.footer-column a:hover {
+    opacity: 1;
+}
+
+.footer-bottom {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 20px 0;
+
+    border-top: 1px solid rgba(255,255,255,0.1);
+
+    font-size: 9px;
+    letter-spacing: 1px;
+
+    opacity: 0.5;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+    .nav-menu {
+        gap: 20px;
     }
 
-    .logo {
-        font-size: 32px;
+    .about-grid {
+        gap: 50px;
+    }
+
+    .footer-links {
+        gap: 60px;
+    }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+    .section-container,
+    .nav-container,
+    .hero-content {
+        width: min(100% - 30px, var(--container));
+    }
+
+
+    /* NAV */
+
+    .nav-container {
+        min-height: 70px;
     }
 
     .nav-menu {
+        position: fixed;
+
+        top: 70px;
+        left: 0;
+
+        width: 100%;
+
+        padding: 25px 20px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 20px;
+
+        background: #061f4c;
+
+        transform: translateY(-150%);
+
+        transition: transform 0.3s ease;
+    }
+
+    .nav-menu.open {
+        transform: translateY(0);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .cart {
         display: none;
     }
 
-    .hero {
-        min-height: calc(100vh - 70px);
-    }
+
+    /* HERO */
 
     .hero-content {
-        padding: 60px 25px;
+        padding-top: 70px;
     }
 
     .hero h1 {
-        font-size: 90px;
+        font-size: clamp(75px, 23vw, 150px);
     }
 
-    .featured {
-        padding: 80px 20px;
+    .hero-description {
+        max-width: 300px;
+
+        line-height: 1.5;
+    }
+
+
+    /* FEATURED */
+
+    .section-header {
+        align-items: end;
+
+        margin-bottom: 30px;
+    }
+
+    .section-header h2 {
+        font-size: 65px;
+    }
+
+    .view-all {
+        font-size: 9px;
     }
 
     .product-grid {
         grid-template-columns: 1fr;
     }
 
+
+    /* ABOUT */
+
+    .about-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .about-heading h2 {
+        font-size: 75px;
+    }
+
+
+    /* FOOTER */
+
+    .footer-top {
+        flex-direction: column;
+
+        gap: 45px;
+    }
+
+    .footer-links {
+        gap: 70px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+}
+
+
+/* ========================================
+   SMALL PHONE
+======================================== */
+
+@media (max-width: 480px) {
+
+    .logo {
+        font-size: 28px;
+    }
+
+    .hero h1 {
+        font-size: 22vw;
+    }
+
+    .hero-button {
+        width: 100%;
+    }
+
+    .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
     .section-header h2 {
-        font-size: 52px;
+        font-size: 60px;
+    }
+
+    .about-heading h2 {
+        font-size: 65px;
+    }
+
+    .cta h2 {
+        font-size: 65px;
+    }
+
+    .footer-links {
+        width: 100%;
+
+        justify-content: space-between;
+
+        gap: 20px;
+    }
+
+}
+
+
+/* ========================================
+   VERY SMALL PHONE
+======================================== */
+
+@media (max-width: 360px) {
+
+    .hero h1 {
+        font-size: 21vw;
+    }
+
+    .about-heading h2,
+    .cta h2 {
+        font-size: 58px;
+    }
+
+}
+
+
+/* ========================================
+   LANDSCAPE PHONE
+======================================== */
+
+@media (max-height: 500px) and (orientation: landscape) {
+
+    .hero {
+        min-height: 600px;
+    }
+
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
     }
 
 }

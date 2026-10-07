@@ -2,15 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="XCOTHIC — Official Store"
+    >
 
     <title>XCOTHIC — Official Store</title>
 
-    <!-- Google Font -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -18,58 +30,89 @@
 
 <body>
 
-    <!-- ==================== NAVBAR ==================== -->
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
     <header class="navbar">
 
-        <div class="navbar-container">
+        <div class="nav-container">
 
-            <!-- Logo -->
             <a href="index.html" class="logo">
                 XCOTHIC
             </a>
 
-            <!-- Navigation -->
-            <nav class="nav-menu">
-                <a href="index.html" class="active">Home</a>
-                <a href="shop.html">Shop</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
+            <nav class="nav-menu" id="navMenu">
+
+                <a href="index.html" class="nav-link active">
+                    HOME
+                </a>
+
+                <a href="shop.html" class="nav-link">
+                    SHOP
+                </a>
+
+                <a href="#about" class="nav-link">
+                    ABOUT
+                </a>
+
+                <a href="#contact" class="nav-link">
+                    CONTACT
+                </a>
+
             </nav>
 
-            <!-- Cart -->
-            <a href="cart.html" class="cart">
-                Cart
-                <span class="cart-count">0</span>
-            </a>
+            <div class="nav-actions">
+
+                <a href="#" class="cart">
+                    CART
+                    <span class="cart-count">0</span>
+                </a>
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </div>
 
         </div>
 
     </header>
 
 
-    <!-- ==================== HERO ==================== -->
     <main>
+
+        <!-- =========================
+             HERO
+        ========================== -->
 
         <section class="hero">
 
+            <div class="hero-overlay"></div>
+
             <div class="hero-content">
 
-                <p class="hero-small">
-                    XCOTHIC — OFFICIAL STORE
+                <p class="hero-label">
+                    EST. 2026
                 </p>
 
                 <h1>
-                    DEFINE<br>
-                    YOUR STYLE.
+                    XCOTHIC
                 </h1>
 
                 <p class="hero-description">
-                    Discover the latest collection from XCOTHIC.
-                    Designed for those who choose their own identity.
+                    BUILT FOR THOSE WHO MOVE DIFFERENT.
                 </p>
 
-                <a href="shop.html" class="hero-button">
-                    SHOP NOW
+                <a href="#featured" class="hero-button">
+                    EXPLORE COLLECTION
                 </a>
 
             </div>
@@ -77,88 +120,152 @@
         </section>
 
 
-        <!-- ==================== FEATURED ==================== -->
-        <section class="featured">
+        <!-- =========================
+             FEATURED PRODUCTS
+        ========================== -->
 
-            <div class="section-header">
+        <section class="featured" id="featured">
 
-                <p class="section-label">
-                    XCOTHIC COLLECTION
-                </p>
+            <div class="section-container">
 
-                <h2>
-                    FEATURED
-                </h2>
+                <div class="section-header">
+
+                    <div>
+                        <p class="section-label">
+                            XCOTHIC COLLECTION
+                        </p>
+
+                        <h2>
+                            FEATURED
+                        </h2>
+                    </div>
+
+                    <a href="shop.html" class="view-all">
+                        VIEW ALL
+                    </a>
+
+                </div>
+
+
+                <div class="product-grid">
+
+                    <!-- Product placeholder -->
+
+                    <article class="product-card product-empty">
+
+                        <div class="product-image">
+                            <span>
+                                COMING SOON
+                            </span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="product-card product-empty">
+
+                        <div class="product-image">
+                            <span>
+                                COMING SOON
+                            </span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="product-card product-empty">
+
+                        <div class="product-image">
+                            <span>
+                                COMING SOON
+                            </span>
+                        </div>
+
+                    </article>
+
+                </div>
 
             </div>
 
+        </section>
 
-            <div class="product-grid">
 
-                <!-- Product 1 -->
-                <article class="product-card">
+        <!-- =========================
+             ABOUT
+        ========================== -->
 
-                    <div class="product-image">
-                        <span>PRODUCT IMAGE</span>
-                    </div>
+        <section class="about" id="about">
 
-                    <div class="product-info">
+            <div class="section-container">
 
-                        <h3>
-                            XCOTHIC TEE 01
-                        </h3>
+                <div class="about-grid">
 
-                        <p>
-                            IDR 249.000
+                    <div class="about-heading">
+
+                        <p class="section-label">
+                            ABOUT XCOTHIC
                         </p>
 
+                        <h2>
+                            MADE TO<br>
+                            STAND OUT.
+                        </h2>
+
                     </div>
 
-                </article>
 
-
-                <!-- Product 2 -->
-                <article class="product-card">
-
-                    <div class="product-image">
-                        <span>PRODUCT IMAGE</span>
-                    </div>
-
-                    <div class="product-info">
-
-                        <h3>
-                            XCOTHIC TEE 02
-                        </h3>
+                    <div class="about-content">
 
                         <p>
-                            IDR 279.000
+                            XCOTHIC is an independent brand built around
+                            individuality, confidence, and a different
+                            perspective.
                         </p>
-
-                    </div>
-
-                </article>
-
-
-                <!-- Product 3 -->
-                <article class="product-card">
-
-                    <div class="product-image">
-                        <span>PRODUCT IMAGE</span>
-                    </div>
-
-                    <div class="product-info">
-
-                        <h3>
-                            XCOTHIC HOODIE 01
-                        </h3>
 
                         <p>
-                            IDR 499.000
+                            Every piece is designed with a simple idea:
+                            create something that feels distinct without
+                            trying too hard.
                         </p>
+
+                        <a href="#contact" class="text-link">
+                            DISCOVER MORE
+                        </a>
 
                     </div>
 
-                </article>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CTA
+        ========================== -->
+
+        <section class="cta">
+
+            <div class="cta-content">
+
+                <p class="section-label">
+                    STAY UPDATED
+                </p>
+
+                <h2>
+                    SOMETHING<br>
+                    NEW IS COMING.
+                </h2>
+
+                <p>
+                    Follow XCOTHIC for upcoming releases,
+                    new collections, and updates.
+                </p>
+
+                <a href="#contact" class="cta-button">
+                    FOLLOW XCOTHIC
+                </a>
 
             </div>
 
@@ -167,15 +274,96 @@
     </main>
 
 
-    <!-- ==================== FOOTER ==================== -->
-    <footer class="footer">
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
-        <p>
-            © 2026 XCOTHIC. All rights reserved.
-        </p>
+    <footer class="footer" id="contact">
+
+        <div class="section-container">
+
+            <div class="footer-top">
+
+                <div class="footer-brand">
+
+                    <a href="index.html" class="logo">
+                        XCOTHIC
+                    </a>
+
+                    <p>
+                        BUILT FOR THOSE WHO MOVE DIFFERENT.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <div class="footer-column">
+
+                        <h3>
+                            NAVIGATION
+                        </h3>
+
+                        <a href="index.html">
+                            HOME
+                        </a>
+
+                        <a href="shop.html">
+                            SHOP
+                        </a>
+
+                        <a href="#about">
+                            ABOUT
+                        </a>
+
+                    </div>
+
+
+                    <div class="footer-column">
+
+                        <h3>
+                            SOCIAL
+                        </h3>
+
+                        <a href="#">
+                            INSTAGRAM
+                        </a>
+
+                        <a href="#">
+                            TIKTOK
+                        </a>
+
+                        <a href="#">
+                            X
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 XCOTHIC. ALL RIGHTS RESERVED.
+                </p>
+
+                <p>
+                    OFFICIAL STORE
+                </p>
+
+            </div>
+
+        </div>
 
     </footer>
 
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
 
 </body>
 </html>
